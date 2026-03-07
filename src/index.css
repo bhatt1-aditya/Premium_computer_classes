@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    --background: 60 42% 87%;
+    --foreground: 214 76% 19%;
+
+    --card: 60 30% 95%;
+    --card-foreground: 214 76% 19%;
+
+    --popover: 60 30% 95%;
+    --popover-foreground: 214 76% 19%;
+
+    --primary: 194 48% 31%;
+    --primary-foreground: 60 42% 95%;
+
+    --secondary: 191 30% 53%;
+    --secondary-foreground: 214 76% 12%;
+
+    --muted: 60 20% 82%;
+    --muted-foreground: 214 30% 40%;
+
+    --accent: 191 30% 53%;
+    --accent-foreground: 214 76% 12%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 194 20% 75%;
+    --input: 194 20% 75%;
+    --ring: 194 48% 31%;
+
+    --radius: 0.75rem;
+
+    --navy: 214 76% 19%;
+    --teal: 194 48% 31%;
+    --light-teal: 191 30% 53%;
+    --cream: 60 42% 87%;
+    --cream-light: 60 50% 95%;
+
+    --sidebar-background: 214 76% 15%;
+    --sidebar-foreground: 60 42% 87%;
+    --sidebar-primary: 191 30% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 214 60% 22%;
+    --sidebar-accent-foreground: 60 42% 87%;
+    --sidebar-border: 214 50% 25%;
+    --sidebar-ring: 191 30% 53%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(214 76% 19%), hsl(194 48% 31%));
+    --gradient-accent: linear-gradient(135deg, hsl(194 48% 31%), hsl(191 30% 53%));
+    --gradient-hero: linear-gradient(135deg, hsl(214 76% 19% / 0.9), hsl(194 48% 31% / 0.8));
+    --shadow-card: 0 4px 24px hsl(214 76% 19% / 0.08);
+    --shadow-elevated: 0 8px 40px hsl(214 76% 19% / 0.12);
+  }
+
+  .dark {
+    --background: 214 76% 8%;
+    --foreground: 60 42% 87%;
+    --card: 214 76% 12%;
+    --card-foreground: 60 42% 87%;
+    --popover: 214 76% 12%;
+    --popover-foreground: 60 42% 87%;
+    --primary: 191 30% 53%;
+    --primary-foreground: 214 76% 8%;
+    --secondary: 194 48% 31%;
+    --secondary-foreground: 60 42% 87%;
+    --muted: 214 50% 15%;
+    --muted-foreground: 60 20% 70%;
+    --accent: 191 30% 53%;
+    --accent-foreground: 214 76% 8%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214 50% 20%;
+    --input: 214 50% 20%;
+    --ring: 191 30% 53%;
+    --sidebar-background: 214 76% 6%;
+    --sidebar-foreground: 60 42% 87%;
+    --sidebar-primary: 191 30% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 214 60% 12%;
+    --sidebar-accent-foreground: 60 42% 87%;
+    --sidebar-border: 214 50% 15%;
+    --sidebar-ring: 191 30% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-4 py-16 md:px-8 lg:px-16 lg:py-24;
+  }
+  .gradient-navy {
+    background: var(--gradient-primary);
+  }
+  .gradient-teal {
+    background: var(--gradient-accent);
+  }
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+  .elevated-shadow {
+    box-shadow: var(--shadow-elevated);
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+  .glass-effect {
+    @apply backdrop-blur-md;
+    background: hsl(var(--cream-light) / 0.7);
+    border: 1px solid hsl(var(--border) / 0.3);
+  }
+}
+
+@layer utilities {
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+  .hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-elevated);
+  }
+}
+
+@keyframes scroll-x {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll-x {
+  animation: scroll-x 25s linear infinite;
+}
+
+.animate-scroll-x-slow {
+  animation: scroll-x 35s linear infinite;
+}
+
+.animate-scroll-x:hover,
+.animate-scroll-x-slow:hover {
+  animation-play-state: paused;
+}
