@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tally Certificate</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:#dcdcdc;
+      font-family:Arial, Helvetica, sans-serif;
+      padding:20px;
+    }
+
+    /* ================= CERTIFICATE ================= */
+
+.certificate{
+
+  width:794px;
+  min-height:1123px;
+
+  margin:auto;
+
+  position:relative;
+
+  background:#fff;
+
+  background-image:url("image.png");
+
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+  background-position:center;
+
+  padding:48px;
+
+}
+
+/* REMOVE OLD BORDER */
+.certificate::before,
+.certificate::after{
+  display:none;
+}
+
+/* ================= INNER CONTENT AREA ================= */
+
+.inner{
+
+  width:100%;
+  height:100%;
+
+  /* INNER BLUE LINE */
+  border:3px solid #2948a5;
+
+  position:relative;
+
+  padding:22px;
+
+  background:transparent;
+
+}
+
+    /* ================= TOP ================= */
+
+    .top{
+
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+
+    }
+
+    .sr-box{
+
+      width:155px;
+      height:24px;
+      border:1px solid #1f45a8;
+      font-size:12px;
+      font-weight:600;
+      padding:4px 8px;
+
+    }
+
+    .top-right{
+
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+
+    }
+
+    .iso{
+
+      border:1px solid #1f45a8;
+      padding:5px 10px;
+      font-size:12px;
+      font-weight:600;
+
+    }
+
+   .logo{
+
+  width:60px;
+  height:60px;
+  border-radius:50%;
+
+  /* border:1px solid #1f45a8; */
+
+  overflow:hidden;
+
+  background:#fff;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+}
+
+.logo img{
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+}
+
+    /* ================= CENTER CONTENT ================= */
+
+    .content{
+
+      /* margin-top:150px; */
+      text-align:center;
+
+    }
+
+   /* ================= PHOTO BOX ================= */
+
+.photo-box{
+
+  width:85px;
+  height:100px;
+
+  margin:0 auto 18px;
+
+  border:1px solid #b5b5b5;
+
+  overflow:hidden;
+
+  background:#fff;
+
+}
+
+.photo-box img{
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+}
+
+/* ================= NAME BOX ================= */
+
+.name-box{
+
+  width:165px;
+  height:26px;
+
+  border:1px solid #5a6db3;
+
+  margin:0 auto 12px;
+
+  background:#fff;
+
+  font-size:13px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+}
+
+/* ================= CERTIFY ================= */
+
+.certify{
+
+  font-family:"Brush Script MT", cursive;
+
+  font-size:30px;
+
+  font-weight:bold;
+
+  color:#222;
+
+}
+
+/* ================= STUDENT NAME ================= */
+
+.student-name{
+
+  margin-top:4px;
+  margin-bottom:18px;
+
+  font-size:18px;
+
+  font-weight:700;
+
+  letter-spacing:0.5px;
+
+  color:#111;
+
+}
+    .desc{
+
+      font-size:16px;
+      line-height:1.8;
+      color:#111;
+      text-align:left;
+
+    }
+
+    .bold{
+      font-weight:700;
+    }
+
+    .blank{
+
+      display:inline-block;
+      width:80px;
+      border-bottom:1px solid #000;
+      vertical-align:middle;
+
+    }
+
+    .course-title{
+
+      text-align:center;
+      margin-top:18px;
+      margin-bottom:20px;
+
+      color:#c96a00;
+      font-size:28px;
+      font-weight:700;
+      font-family:"Times New Roman", serif;
+
+    }
+
+    /* ================= TABLE ================= */
+
+    table{
+
+      width:82%;
+      margin:auto;
+      border-collapse:collapse;
+      font-size:13px;
+
+    }
+
+    table th,
+    table td{
+
+      border:1px solid #1f45a8;
+      padding:3px 5px;
+      text-align:center;
+
+    }
+
+    table th{
+
+      font-weight:700;
+
+    }
+
+    .course-content{
+
+      text-align:left !important;
+      padding:6px !important;
+      line-height:1.5;
+
+    }
+
+    .result{
+      font-weight:bold;
+    }
+
+    /* ================= RULES ================= */
+
+    .rules{
+
+      margin-top:18px;
+      font-size:11px;
+      line-height:1.7;
+      text-align:left;
+
+    }
+
+    .rules ul{
+
+      margin-left:18px;
+      margin-top:5px;
+
+    }
+
+    .rules li{
+
+      margin-bottom:2px;
+
+    }
+
+    /* ================= SIGNATURE ================= */
+
+    .signatures{
+
+      margin-top:95px;
+      display:flex;
+      justify-content:space-between;
+      text-align:center;
+
+      font-size:9px;
+      font-weight:600;
+
+    }
+
+    /* ================= DATE ================= */
+
+    .issue-date{
+
+      width:170px;
+      border:1px solid #1f45a8;
+      margin:65px auto 20px;
+      padding:4px 8px;
+      font-size:12px;
+      text-align:left;
+
+    }
+
+    /* ================= FOOTER ================= */
+
+    .footer{
+
+      font-size:9px;
+      line-height:1.4;
+      margin-top:10px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="certificate">
+
+    <div class="inner">
+
+      <!-- TOP -->
+
+      <div class="top">
+
+        <div class="sr-box">
+          Sr. No.
+        </div>
+
+        <div class="top-right">
+
+          <div class="iso">
+            ISO 9001:2015
+          </div>
+
+         <div class="logo">
+  <img src="/src/assets/logo.png" alt="logo">
+</div>
+
+        </div>
+
+      </div>
+
+      <!-- CONTENT -->
+
+      <div class="content">
+
+        <!-- <div class="certify">
+          This is to certify that
+        </div>
+
+        <div class="line"></div> -->
+
+        <!-- PHOTO BOX -->
+
+<div class="photo-box">
+
+  <img src="/src/assets/student.png" alt="student">
+
+</div>
+
+<!-- NAME BOX -->
+
+<div class="name-box">
+  <!-- STUDENT NAME HERE -->
+</div>
+
+<!-- CERTIFY TEXT -->
+
+<div class="certify">
+  This is to certify that
+</div>
+
+<!-- STUDENT NAME -->
+
+<div class="student-name">
+  KIRANBALA MOHANTY
+</div>
+
+<!-- DESCRIPTION -->
+
+<div class="desc">
+        <!-- <div class="desc"> -->
+
+          has successfully completed the prescribed course of studies and
+          passed the examination conducted by
+
+          <span class="bold">
+            PREMIUM COMPUTER CLASSES, Bhubaneswar, Odisha
+          </span>
+
+          with
+
+          <span class="blank"></span>
+
+          <span class="bold">
+            percent marks
+          </span>
+
+          and has been awarded the
+
+        </div>
+
+        <div class="course-title">
+          TALLY ERP 9 WITH GST
+        </div>
+
+        <!-- TABLE -->
+
+        <table>
+
+          <tr>
+            <th>Section Number</th>
+            <th>Section Name</th>
+            <th>Marks Obtained</th>
+            <th>Maximum Marks</th>
+          </tr>
+
+          <tr>
+            <td>I</td>
+            <td>Theory Examination</td>
+            <td></td>
+            <td>50</td>
+          </tr>
+
+          <tr>
+            <td>II</td>
+            <td>Practical Examination</td>
+            <td></td>
+            <td>50</td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td><b>Total Mark</b></td>
+            <td></td>
+            <td><b>100</b></td>
+          </tr>
+
+          <tr>
+
+            <td colspan="2" class="result">
+              Examination Result
+            </td>
+
+            <td colspan="2" class="result">
+              PASS
+            </td>
+
+          </tr>
+
+          <tr>
+
+            <td colspan="4" class="course-content">
+
+              <b>Course Content:</b>
+
+              Accounting Fundamentals,
+              GST,
+              Inventory Management,
+              Payroll,
+              Banking,
+              Voucher Entry,
+              Financial Reports,
+              TDS,
+              TCS,
+              and Tally ERP-9 Features.
+
+            </td>
+
+          </tr>
+
+        </table>
+
+        <!-- RULES -->
+
+        <div class="rules">
+
+          Following are the criteria for passing the TALLY Examination successfully:
+
+          <ul>
+
+            <li>
+              The candidate must obtain an aggregate minimum of 40% marks out of the total maximum marks.
+            </li>
+
+            <li>
+              A minimum of 40% marks in Theory is mandatory.
+            </li>
+
+            <li>
+              A minimum of 40% marks in Practical / Project Work is mandatory.
+            </li>
+
+            <li>
+              The candidate must pass both Theory and Practical separately.
+            </li>
+
+          </ul>
+
+        </div>
+
+        <!-- SIGNATURES -->
+
+        <div class="signatures">
+
+          <div>
+
+            Instructor<br>
+            Premium Computer Classes, Bhubaneswar, Odisha
+
+          </div>
+
+          <div>
+
+            Director<br>
+            Premium Computer Classes, Bhubaneswar, Odisha
+
+          </div>
+
+        </div>
+
+        <!-- ISSUE DATE -->
+
+        <div class="issue-date">
+          Date of Issue:
+        </div>
+
+        <!-- FOOTER -->
+
+        <div class="footer">
+
+          @ Learning process Marks are as communicated by PCC<br>
+
+          @Final examination marks are evaluated by PCC<br>
+
+          “The photograph of Candidate is printed on this certificate.
+          If the photograph is pasted externally this Certificate will not be valid”<br>
+
+          MSME Registration No.: UDYAM-OD-19-0090591 |
+          ISO Certificate No.: D80A673B
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

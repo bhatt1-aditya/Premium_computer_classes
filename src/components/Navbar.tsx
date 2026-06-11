@@ -44,14 +44,16 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-navy/95 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
+        scrolled ? "bg-navy/95 backdrop-blur-md shadow-lg" : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="Premium Computer Classes" className="h-12 w-auto rounded-full" />
+          <img
+            src={logo}
+            alt="Premium Computer Classes"
+            className="h-12 w-auto rounded-full"
+          />
           <span className="hidden font-display text-lg font-bold text-cream-light sm:block">
             Premium Computer Classes
           </span>
@@ -77,12 +79,12 @@ const Navbar = () => {
             <Phone className="h-4 w-4" />
             +91 9583778772
           </a>
-          <Link
+          {/* <Link
             to="/signin"
             className="rounded-full bg-light-teal px-6 py-2.5 text-sm font-semibold text-navy transition-all hover:scale-105 hover:shadow-lg"
           >
             Sign In
-          </Link>
+          </Link> */}
         </div>
 
         <button
@@ -111,13 +113,13 @@ const Navbar = () => {
                   {link.label}
                 </button>
               ))}
-              <Link
+              {/* <Link
                 to="/signin"
                 onClick={() => setOpen(false)}
                 className="mt-2 rounded-full bg-light-teal px-6 py-2.5 text-center text-sm font-semibold text-navy"
               >
                 Sign In
-              </Link>
+              </Link> */}
             </div>
           </motion.div>
         )}
