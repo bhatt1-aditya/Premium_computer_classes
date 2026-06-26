@@ -119,11 +119,10 @@ const Contact = () => {
                     key={course}
                     type="button"
                     onClick={() => toggleCourse(course)}
-                    className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${
-                      form.interested_courses.includes(course)
+                    className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${form.interested_courses.includes(course)
                         ? "bg-primary text-primary-foreground"
                         : "border border-border bg-background text-foreground hover:bg-muted"
-                    }`}
+                      }`}
                   >
                     {course}
                   </button>
@@ -165,8 +164,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="font-semibold text-foreground">Email</p>
-                  <a href="mailto:premiumcomputerclasses@gmail.com" className="text-muted-foreground hover:text-primary">
-                    premiumcomputerclasses@gmail.com
+                  <a href="mailto:info.pcc.org@gmail.com" className="text-muted-foreground hover:text-primary">
+                    info.pcc.org@gmail.com
                   </a>
                 </div>
               </div>
@@ -187,12 +186,13 @@ const Contact = () => {
               rel="noopener noreferrer"
               className="block h-72 overflow-hidden rounded-2xl card-shadow cursor-pointer"
             >
-              <iframe
+              {/* <iframe
                 title="Premium Computer Classes Location"
                 src="https://www.openstreetmap.org/export/embed.html?bbox=85.847%2C20.257%2C85.855%2C20.263&layer=mapnik&marker=20.2600603%2C85.8509783"
                 className="h-full w-full border-0 pointer-events-none"
                 loading="lazy"
-              />
+              /> */}
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3742.9704487715303!2d85.8509783!3d20.260060300000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a15bad91ed85%3A0x5d0a2557e3ada5f2!2sPremium%20Computer%20Classes!5e0!3m2!1sen!2sin!4v1782480491704!5m2!1sen!2sin" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </a>
           </motion.div>
         </div>
