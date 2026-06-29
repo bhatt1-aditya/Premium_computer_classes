@@ -30,12 +30,36 @@ const Gallery = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const [galleryRes, testimonialsRes] = await Promise.all([
-        supabase.from("gallery").select("*").order("created_at", { ascending: false }),
-        supabase.from("testimonials").select("*").order("created_at", { ascending: false }),
-      ]);
-      if (galleryRes.data) setGalleryItems(galleryRes.data);
-      if (testimonialsRes.data) setTestimonials(testimonialsRes.data);
+      // 1. Fetch gallery items from Supabase
+      try {
+        const { data: galleryRes } = await supabase
+          .from("gallery")
+          .select("*")
+          .order("created_at", { ascending: false });
+        if (galleryRes) setGalleryItems(galleryRes);
+      } catch (err) {
+        console.error("Failed to fetch gallery items:", err);
+      }
+
+      // 2. Fetch testimonials from the Dashboard backend API
+      try {
+        const apiUrl = import.meta.env.VITE_API_URL || "https://premium-computer-classes-dashboard.onrender.com/api";
+        const response = await fetch(`${apiUrl}/testimonial/get-all-testimonials`);
+        const data = await response.json();
+        
+        if (data && data.success && Array.isArray(data.testimonials)) {
+          const mapped = data.testimonials.map((t: any) => ({
+            id: t._id || String(Math.random()),
+            image_url: t.image,
+            description: t.description || null,
+          }));
+          setTestimonials(mapped);
+        } else {
+          console.warn("Testimonials fetch was not successful:", data);
+        }
+      } catch (err) {
+        console.error("Failed to fetch testimonials from API:", err);
+      }
     };
     fetchData();
   }, []);
