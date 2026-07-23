@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import CursorFollower from "@/components/CursorFollower";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import DemoPopup from "@/components/DemoPopup";
+import Founder from "@/components/Founder";
 
 const Index = () => {
   return (
@@ -16,7 +17,7 @@ const Index = () => {
       <CursorFollower />
       <Navbar />
       <Hero />
-      <About />
+      <Founder/>
       <Courses />
       <CertificateSection />
       <Gallery />

@@ -217,7 +217,7 @@ const About = () => {
             {/* Founder Content */}
             <div>
               <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-primary">
-                Founder & Director
+                Founder
               </p>
 
               <h3 className="mb-4 text-4xl font-bold">

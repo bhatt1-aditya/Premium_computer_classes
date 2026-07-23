@@ -4,7 +4,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 
 const stats = [
   { icon: BookOpen, label: "Courses Offered", value: "6+" },
-  { icon: Users, label: "Students Trained", value: "500+" },
+  { icon: Users, label: "Students Trained", value: "1000+" },
   { icon: Award, label: "Years of Excellence", value: "4+" },
 ];
 
