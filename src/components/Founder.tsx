@@ -1,12 +1,7 @@
 import { motion, useInView } from "framer-motion";
-import founder from "../assets/founder.png"
+import founder from "../assets/founder.png";
 import { useRef } from "react";
-import {
-  Target,
-  Lightbulb,
-  TrendingUp,
-  Heart,
-} from "lucide-react";
+import { Target, Lightbulb, TrendingUp, Heart } from "lucide-react";
 import OurTeam from "./OurTeam";
 
 const values = [
@@ -60,13 +55,8 @@ const Founder = () => {
   });
 
   return (
-    <section
-      id="about"
-      className="py-6 bg-background"
-      ref={ref}
-    >
+    <section id="about" className="py-6 bg-background" ref={ref}>
       <div className="mx-auto max-w-7xl px-4">
-
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -85,9 +75,9 @@ const Founder = () => {
           <p className="mx-auto max-w-4xl text-lg leading-relaxed text-gray-600">
             Premium Computer Classes is a leading computer training institute
             committed to providing quality, practical, and career-oriented
-            computer education. We believe that technology empowers people,
-            and our mission is to equip students with the skills required
-            to excel in academics, competitive examinations, and professional careers.
+            computer education. We believe that technology empowers people, and
+            our mission is to equip students with the skills required to excel
+            in academics, competitive examinations, and professional careers.
           </p>
         </motion.div>
 
@@ -99,7 +89,6 @@ const Founder = () => {
           className="mb-20"
         >
           <div className="grid items-center gap-10 lg:grid-cols-2">
-
             {/* Founder Image */}
             <div className="flex justify-center">
               <div className="overflow-hidden rounded-3xl shadow-xl">
@@ -122,47 +111,46 @@ const Founder = () => {
               </h3>
 
               <p className="mb-4 leading-relaxed text-gray-600">
-                An initiative by Prof. Er. Swayam Swagatam Swain,
-                Premium Computer Classes combines experienced teaching,
-                practical learning, and industry-relevant training to help
-                every student build confidence and technical expertise.
+                An initiative by Prof. Er. Swayam Swagatam Swain, Premium
+                Computer Classes combines experienced teaching, practical
+                learning, and industry-relevant training to help every student
+                build confidence and technical expertise.
               </p>
 
               <p className="mb-6 leading-relaxed text-gray-600">
                 Our focus is on hands-on learning, individual attention,
-                affordable education, and placement-oriented training.
-                Whether you are a school student, college student,
-                job seeker, working professional, or business owner,
-                we have the right course to help you achieve your goals.
+                affordable education, and placement-oriented training. Whether
+                you are a school student, college student, job seeker, working
+                professional, or business owner, we have the right course to
+                help you achieve your goals.
               </p>
 
+              <div className="mb-8 rounded-2xl border-l-4 border-primary bg-primary/5 p-6">
+                <p className="text-lg italic leading-relaxed text-gray-700">
+                  "Every student has the potential to achieve greatness. My
+                  mission is to transform that potential into skills,
+                  confidence, and success through quality computer education."
+                </p>
+
+                <p className="mt-4 font-semibold text-primary">
+                  — Er. Swayam Swagatam Swain
+                </p>
+              </div>
+
               <div className="grid grid-cols-2 gap-4">
-
                 <div className="rounded-xl bg-primary/10 p-5">
-                  <h4 className="text-3xl font-bold text-primary">
-                    2021
-                  </h4>
-                  <p className="text-gray-600">
-                    Established
-                  </p>
+                  <h4 className="text-3xl font-bold text-primary">2021</h4>
+                  <p className="text-gray-600">Established</p>
                 </div>
 
                 <div className="rounded-xl bg-primary/10 p-5">
-                  <h4 className="text-3xl font-bold text-primary">
-                    1000+
-                  </h4>
-                  <p className="text-gray-600">
-                    Students Trained
-                  </p>
+                  <h4 className="text-3xl font-bold text-primary">1000+</h4>
+                  <p className="text-gray-600">Students Trained</p>
                 </div>
-
               </div>
             </div>
           </div>
         </motion.div>
-
-     
-
       </div>
     </section>
   );
