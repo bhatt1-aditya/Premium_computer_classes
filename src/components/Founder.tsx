@@ -103,7 +103,7 @@ const Founder = () => {
             {/* Founder Content */}
             <div>
               <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-primary">
-                Founder
+                Founder & Lead Trainer
               </p>
 
               <h3 className="mb-4 text-4xl font-bold">
