@@ -30,23 +30,48 @@ const Gallery = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // 1. Fetch gallery items from Supabase
+      const apiUrl =
+        import.meta.env.VITE_API_URL ||
+        "https://premium-computer-classes-dashboard.onrender.com/api";
+
+      // 1. Fetch gallery items from Admin Dashboard API, fallback to Supabase
       try {
-        const { data: galleryRes } = await supabase
-          .from("gallery")
-          .select("*")
-          .order("created_at", { ascending: false });
-        if (galleryRes) setGalleryItems(galleryRes);
+        const response = await fetch(`${apiUrl}/gallery/get-all-gallery`);
+        const data = await response.json();
+
+        if (data && data.success && Array.isArray(data.gallery) && data.gallery.length > 0) {
+          const mapped = data.gallery.map((g: any) => ({
+            id: g._id || String(Math.random()),
+            image_url: g.image,
+            caption: g.caption || g.title || null,
+          }));
+          setGalleryItems(mapped);
+        } else {
+          // Fallback to Supabase
+          const { data: galleryRes } = await supabase
+            .from("gallery")
+            .select("*")
+            .order("created_at", { ascending: false });
+          if (galleryRes && galleryRes.length > 0) setGalleryItems(galleryRes);
+        }
       } catch (err) {
-        console.error("Failed to fetch gallery items:", err);
+        console.warn("Failed to fetch gallery from Dashboard API, trying Supabase fallback:", err);
+        try {
+          const { data: galleryRes } = await supabase
+            .from("gallery")
+            .select("*")
+            .order("created_at", { ascending: false });
+          if (galleryRes) setGalleryItems(galleryRes);
+        } catch (e) {
+          console.error("Supabase fallback failed:", e);
+        }
       }
 
       // 2. Fetch testimonials from the Dashboard backend API
       try {
-        const apiUrl = import.meta.env.VITE_API_URL || "https://premium-computer-classes-dashboard.onrender.com/api";
         const response = await fetch(`${apiUrl}/testimonial/get-all-testimonials`);
         const data = await response.json();
-        
+
         if (data && data.success && Array.isArray(data.testimonials)) {
           const mapped = data.testimonials.map((t: any) => ({
             id: t._id || String(Math.random()),
@@ -61,6 +86,7 @@ const Gallery = () => {
         console.error("Failed to fetch testimonials from API:", err);
       }
     };
+
     fetchData();
   }, []);
 

@@ -88,6 +88,22 @@ const SignIn = () => {
               {loading ? "Signing in..." : "Sign In"}
             </button>
           </form>
+
+          <div className="mt-6 pt-5 border-t border-border text-center">
+            <a
+              href={
+                import.meta.env.VITE_DASHBOARD_URL ||
+                (window.location.hostname === "localhost"
+                  ? "http://localhost:3000/login"
+                  : "https://admin.premiumcomputerclasses.in/login")
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1.5"
+            >
+              Staff or Administrator? Access CRM Dashboard →
+            </a>
+          </div>
         </div>
       </div>
     </div>

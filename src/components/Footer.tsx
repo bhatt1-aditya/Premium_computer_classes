@@ -38,6 +38,17 @@ const Footer = () => {
             </a>
           </div>
 
+          <div className="flex items-center gap-4 text-xs">
+            <a
+              href="https://admin.premiumcomputerclasses.in/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-light-teal hover:underline font-semibold"
+            >
+              🔒 Staff & Admin Dashboard Portal
+            </a>
+          </div>
+
           <p className="text-center text-sm">
             Crafted and Developed by{" "}
             <a

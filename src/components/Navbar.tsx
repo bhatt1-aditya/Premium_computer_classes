@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, LayoutDashboard } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/logo.png";
 
@@ -17,6 +17,12 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const dashboardUrl =
+    import.meta.env.VITE_DASHBOARD_URL ||
+    (window.location.hostname === "localhost"
+      ? "http://localhost:3000/login"
+      : "https://admin.premiumcomputerclasses.in/login");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -79,12 +85,16 @@ const Navbar = () => {
             <Phone className="h-4 w-4" />
             +91 9583778772
           </a>
-          {/* <Link
-            to="/signin"
-            className="rounded-full bg-light-teal px-6 py-2.5 text-sm font-semibold text-navy transition-all hover:scale-105 hover:shadow-lg"
+          <a
+            href={dashboardUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-light-teal px-5 py-2 text-sm font-semibold text-navy transition-all hover:scale-105 hover:shadow-lg flex items-center gap-1.5"
+            title="Open Admin CRM Dashboard Login"
           >
-            Sign In
-          </Link> */}
+            <LayoutDashboard className="h-4 w-4" />
+            Dashboard Login
+          </a>
         </div>
 
         <button
@@ -113,13 +123,16 @@ const Navbar = () => {
                   {link.label}
                 </button>
               ))}
-              {/* <Link
-                to="/signin"
+              <a
+                href={dashboardUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
-                className="mt-2 rounded-full bg-light-teal px-6 py-2.5 text-center text-sm font-semibold text-navy"
+                className="mt-2 rounded-full bg-light-teal px-6 py-2.5 text-center text-sm font-semibold text-navy flex items-center justify-center gap-2"
               >
-                Sign In
-              </Link> */}
+                <LayoutDashboard className="h-4 w-4" />
+                Dashboard Login
+              </a>
             </div>
           </motion.div>
         )}
