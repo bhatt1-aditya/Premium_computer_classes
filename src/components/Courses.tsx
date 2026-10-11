@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { ArrowRight, Award } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +10,16 @@ import courseExcel from "@/assets/course-excel.jpg";
 import courseGraphic from "@/assets/course-graphic.jpg";
 import courseGenai from "@/assets/course-genai.jpg";
 
-const courses = [
+interface CourseItem {
+  id?: string;
+  image: string;
+  title: string;
+  subtitle?: string;
+  description: string;
+  duration: string;
+}
+
+const fallbackCourses: CourseItem[] = [
   {
     image: coursePgdca,
     title: "PGDCA",
@@ -66,6 +75,37 @@ const Courses = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const navigate = useNavigate();
 
+  const [courseList, setCourseList] = useState<CourseItem[]>(fallbackCourses);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const apiUrl =
+          import.meta.env.VITE_API_URL ||
+          "https://premium-computer-classes-dashboard.onrender.com/api";
+
+        const res = await fetch(`${apiUrl}/course/get-all-courses`);
+        const data = await res.json();
+
+        if (data && data.success && Array.isArray(data.courses) && data.courses.length > 0) {
+          const mapped = data.courses.map((c: any) => ({
+            id: c._id,
+            title: c.title,
+            subtitle: c.subtitle || "",
+            description: c.description,
+            duration: c.duration || "3 Months",
+            image: c.image || coursePgdca,
+          }));
+          setCourseList(mapped);
+        }
+      } catch (err) {
+        console.warn("Failed to fetch dynamic courses from Dashboard API, using defaults:", err);
+      }
+    };
+
+    fetchCourses();
+  }, []);
+
   const scrollTo = (id: string) => {
     if (id.startsWith("/")) {
       navigate(id);
@@ -97,13 +137,13 @@ const Courses = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {courses.map((course, i) => (
+          {courseList.map((course, i) => (
             <motion.div
-              key={course.title}
+              key={course.id || course.title}
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-              className="hover-lift group relative overflow-hidden rounded-2xl"
+              transition={{ duration: 0.5, delay: 0.1 + (i % 6) * 0.1 }}
+              className="hover-lift group relative overflow-hidden rounded-2xl min-h-[380px] flex flex-col justify-end"
             >
               <img
                 src={course.image}
@@ -118,10 +158,12 @@ const Courses = () => {
                 <h3 className="mb-1 font-display text-2xl font-bold text-cream-light">
                   {course.title}
                 </h3>
-                <p className="mb-3 text-xs font-medium text-light-teal">
-                  {course.subtitle}
-                </p>
-                <p className="mb-6 text-sm leading-relaxed text-cream-light/60">
+                {course.subtitle && (
+                  <p className="mb-3 text-xs font-medium text-light-teal">
+                    {course.subtitle}
+                  </p>
+                )}
+                <p className="mb-6 text-sm leading-relaxed text-cream-light/60 line-clamp-3">
                   {course.description}
                 </p>
                 <div className="flex gap-3">
